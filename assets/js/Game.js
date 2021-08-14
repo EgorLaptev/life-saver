@@ -177,6 +177,12 @@ export default class Game {
                 const newPlace =  this._fallingCells[i] + this.config.columns;
                 const cellType =  this._cells[this._fallingCells[i]].className;
 
+                /* If cell beyond the edges */
+                if (newPlace > this._cells.length-1) {
+                    this._fallingCells.splice(i, 1);
+                    continue;
+                }
+
                 /* If hearts falling on player */
                 if (
                     cellType === 'cell heart' &&
